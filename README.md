@@ -263,5 +263,3 @@ those of ChatGPT/GPT4, which include:
   misinterpretation and incorrect responses.
 
 
-
-[![Star History Chart](https://api.star-history.com/svg?repos=FreedomIntelligence/LLMZoo&type=Date)](https://star-history.com/#FreedomIntelligence/LLMZoo&Date)
