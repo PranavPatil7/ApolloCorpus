@@ -4,13 +4,7 @@
 <img src="assets/zoo.png" width = "640" alt="zoo" align=center />
 </div>
 
-⚡LLM Zoo is a project that provides data, models, and evaluation benchmark for large language models.⚡ [[Tech Report]](assets/llmzoo.pdf)
-
-## ✨ Latest News
-- [07/12/2023]: More instruction-following data of different languages is available [here](https://github.com/FreedomIntelligence/MultilingualSIFT).
-- [05/05/2023]: Release the training code. Now, you can replicate a multilingual instruction-following LLM by yourself. :-)
-- [04/24/2023]: Add more results (e.g., MOSS) in the evaluation benchmark.
-- [04/08/2023]: Release the Phoenix (for all languages) and Chimera (for Latin languages) models.
+⚡LLM Zoo is a project that provides data, models, and evaluation benchmark for large language models.⚡ 
 
 ## 🤔 Motivation
 - Break  "AI supremacy"  and democratize ChatGPT
@@ -46,7 +40,7 @@ and it will download the model from Hugging Face automatically. For `Chimera`, p
 
 ## 📚 Data
 ### Overview
-We used the following two types of data for training `Phoenix` and `Chimera`:
+I used the following two types of data for training `Phoenix` and `Chimera`:
 
 <details><summary><b>Instruction data</b></summary>
 
@@ -170,7 +164,7 @@ Similar biomedical models could be seen in [biomedical LLMs](assets/biomedical-m
 
 ## 🧐 Evaluation and Benchmark
 
-We provide a bilingual, multidimensional comparison across different open-source models with ours.
+I provide a bilingual, multidimensional comparison across different open-source models with ours.
 
 ### Chinese
 
@@ -211,33 +205,7 @@ We provide a bilingual, multidimensional comparison across different open-source
 | Chimera-inst-chat-13b vs.  **ChatGPT** | **96.6\%** |
 
 
-## 👾 Quantization
 
-We offer int8 and int4 quantizations, which will largely reduce the GPU memory consumption, e.g., from ~28GB to ~7GB for phoenix.
-
-### Int8
-
-You can directly obatin int8 version of phoenix by passing `--load-8bit` when using cli inference. E.g.,
-```bash
-python -m llmzoo.deploy.cli --model-path FreedomIntelligence/phoenix-inst-chat-7b --load-8bit
-```
-
-### Int4
-
-For int4 version, we take advantage of GPTQ. You can directly obatin int4 version of `Phoenix` by passing int4 version model and `--load-4bit` when using cli inference. This would require package `AutoGPTQ` be installed. E.g.,
-```bash
-python -m llmzoo.deploy.cli --model-path FreedomIntelligence/phoenix-inst-chat-7b-int4 --load-4bit
-```
-We use [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ) to support `Phoenix` via,
-```bash
-BUILD_CUDA_EXT=0 pip install auto-gptq[triton]
-```
-
-For `Chimera`, we can not share the int4 version parameters due to restrictions. And you can follow the example in our patched [AutoGPTQ](https://github.com/GeneZC/AutoGPTQ-triton/tree/main/examples) to conduct quantization by yourselves.
-
-Thank [yhyu13](https://github.com/yhyu13), please check the merged weight and GPTQ quantized weight for chimera in [chimera-inst-chat-13b-hf](https://huggingface.co/Yhyu13/) and [chimera-inst-chat-13b-gptq-4bit](https://huggingface.co/Yhyu13/chimera-inst-chat-13b-gptq-4bit).
-
-**Inference in pure C/C++**: You can refer to this [link](https://github.com/wtxfrancise/quantize_models) to run `Chimera` or `Phoenix` on your PC.
 
 ## 🏭 Deployment
 
@@ -275,8 +243,8 @@ bash scripts/train_chimera_13b.sh
 
 ## 🤖 Limitations
 
-Our goal in releasing our models is to assist our community in better replicating ChatGPT/GPT4. We are not targeting
-competition with other competitors, as benchmarking models is a challenging task. Our models face similar models to
+My goal in releasing My models is to assist our community in better replicating ChatGPT/GPT4. I am not targeting
+competition with other competitors, as benchmarking models is a challenging task. My models face similar models to
 those of ChatGPT/GPT4, which include:
 
 - Lack of common sense: our models may not always have the ability to apply common sense knowledge to situations, which
@@ -294,54 +262,6 @@ those of ChatGPT/GPT4, which include:
 - Misunderstandings due to context: our models may misunderstand the context of a conversation, leading to
   misinterpretation and incorrect responses.
 
-## 🙌 Contributors
 
-LLM Zoo is mainly contributed by:
-
-- Data and Model: [Zhihong Chen](https://zhjohnchan.github.io/), [Junying Chen](), [Hongbo Zhang](), [Feng Jiang](https://fjiangai.github.io/)
-  , [Chen Zhang](https://genezc.github.io/), [Benyou Wang](https://wabyking.github.io/old.html) (Advisor)
-- Evaluation: [Fei Yu](https://github.com/OakYU), [Tiannan Wang](), [Guiming Chen]()
-- Others: Zhiyi Zhang, Jianquan Li and Xiang Wan
-
-As an open-source project, we are open to contributions. Feel free to contribute if you have any ideas or find any
-issue.
-
-## Acknowledgement
-
-We are aware that our works are inspired by the following works, including but not limited to
-
-- LLaMA: https://github.com/facebookresearch/llama
-- Bloom: https://huggingface.co/bigscience/bloom
-- Self-instruct: https://github.com/yizhongw/self-instruct
-- Alpaca: https://github.com/tatsu-lab/stanford_alpaca
-- Vicuna: https://github.com/lm-sys/FastChat
-
-Without these, nothing could happen in this repository.
-
-## Citation
-```angular2
-@article{phoenix-2023,
-  title={Phoenix: Democratizing ChatGPT across Languages},
-  author={Zhihong Chen and Feng Jiang and Junying Chen and Tiannan Wang and Fei Yu and Guiming Chen and Hongbo Zhang and Juhao Liang and Chen Zhang and Zhiyi Zhang and Jianquan Li and Xiang Wan and Benyou Wang and Haizhou Li},
-  journal={arXiv preprint arXiv:2304.10453},
-  year={2023}
-}
-```
-
-```angular2
-@misc{llm-zoo-2023,
-  title={LLM Zoo: democratizing ChatGPT},
-  author={Zhihong Chen and Junying Chen and Hongbo Zhang and Feng Jiang and Guiming Chen and Fei Yu and Tiannan Wang and Juhao Liang and Chen Zhang and Zhiyi Zhang and Jianquan Li and Xiang Wan and Haizhou Li and Benyou Wang},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/FreedomIntelligence/LLMZoo}},
-}
-```
-
-We are from the School of Data Science, the Chinese University of Hong Kong, Shenzhen (CUHKSZ) and the Shenzhen Rsearch
-Institute of Big Data (SRIBD).
-
-## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=FreedomIntelligence/LLMZoo&type=Date)](https://star-history.com/#FreedomIntelligence/LLMZoo&Date)
