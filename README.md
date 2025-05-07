@@ -1,4 +1,4 @@
-# LLM Zoo: democratizing ChatGPT
+# ApolloCorpus, Multilingual Medical Benchmark for LLMs
 
 <div align=center>
 <img src="assets/zoo.png" width = "640" alt="zoo" align=center />
